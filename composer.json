@@ -1,0 +1,21 @@
+
+{
+    "name": "audiobookServer",
+    "repositories": [
+    ],
+    "authors": [
+        {
+            "name": "Soeren Poschmann",
+            "email": "hello@kekskurse.de"
+        }
+    ],
+    "require": {
+        "slim/slim": "2.6",
+        "nass600/get-id3":"dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Lib\\": ""
+        }
+    }
+}
