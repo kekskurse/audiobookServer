@@ -44,7 +44,7 @@ class Filesystem implements SlowAccessInterface
   }
   public function getAlbum($aaID, $details = false)
   {
-    var_dump($aaID);
+    #var_dump($aaID);
     $detais = $this->getKey("scan");
     $ralbum = NULL;
     foreach($detais as $artist => $v)
