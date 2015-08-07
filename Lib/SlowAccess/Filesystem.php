@@ -56,6 +56,8 @@ class Filesystem implements SlowAccessInterface
           #var_dump($detais[$artist][$album]["aaID"]);
           #var_dump($detais[$artist][$album]);exit();
           $ralbum =  $detais[$artist][$album];
+          $ralbum["artist"] = $artist;
+          $ralbum["album"] = $album;
           break;
         }
       }
