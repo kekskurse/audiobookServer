@@ -6,14 +6,17 @@ class Filesystem implements StorageInterface
   {
     $this->config = $config;
   }
-  public function scan()
+  public function scan($print = false)
   {
+    if($print) { echo "Start\r\n"; }
     $id3Tags = array();
     foreach($this->config["path"] as $path)
     {
+      if($print) { echo "Scan ".$path."\r\n"; }
       $files = $this->scanDir($path);
       foreach($files as $f)
       {
+        if($print) { echo "ID3 ".$f."\r\n"; }
         $r = $this->scanID3($f);
         if($r!==false)
         {
@@ -21,6 +24,7 @@ class Filesystem implements StorageInterface
         }
       }
     }
+    if($print) { echo "Merge\r\n"; }
     $id3Tags = $this->mergeId3($id3Tags);
     return $id3Tags;
   }
