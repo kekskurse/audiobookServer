@@ -44,27 +44,36 @@ class Filesystem implements SlowAccessInterface
   }
   public function getAlbum($aaID, $details = false)
   {
+    var_dump($aaID);
     $detais = $this->getKey("scan");
-    $album = NULL;
+    $ralbum = NULL;
     foreach($detais as $artist => $v)
     {
       foreach($detais[$artist] as $album =>$v)
       {
         if($detais[$artist][$album]["aaID"]==$aaID)
         {
-          $album =  $detais[$artist][$album];
+          #var_dump($detais[$artist][$album]["aaID"]);
+          #var_dump($detais[$artist][$album]);exit();
+          $ralbum =  $detais[$artist][$album];
           break;
         }
       }
     }
+    if($album==NULL)
+    {
+      throw new \Exception("Error Processing Request", 1);
+
+    }
     if(!$details)
     {
-      foreach($detais[$artist][$album]["tracks"] as $key => $v)
+      #var_dump($ralbum);
+      foreach($ralbum["tracks"] as $key => $v)
       {
-        unset($detais[$artist][$album]["tracks"][$key]["file"]);
+        unset($ralbum["tracks"][$key]["file"]);
       }
     }
-    return $detais[$artist][$album];
+    return $ralbum;
   }
   public function getTrack($aaID, $trackID, $details = false)
   {

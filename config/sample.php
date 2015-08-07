@@ -3,13 +3,15 @@
 $fastAccess = new \Lib\FastAccess\Filesystem(__DIR__."/../cache/FastStorage/");
 $slowAccess = new \Lib\SlowAccess\Filesystem(__DIR__."/../cache/SlowStorage/");
 
+
+
 $storage = [];
 $storage[] = [
   "name"=>"Local",
   "storage"=>new \Lib\Storage\Filesystem(
     [
       "path"=> ["/home/share/audiobook"],
-      "link"=> url::createURL(["ab", "_aaID_", "_trackID_", "mp3"])
+      "link"=> ""#url::createURL(["ab", "_aaID_", "_trackID_", "mp3"])
     ]
   )
 ];
