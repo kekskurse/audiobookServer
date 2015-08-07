@@ -59,12 +59,12 @@ class Filesystem implements SlowAccessInterface
     }
     if(!$details)
     {
-      foreach($album["tracks"] as $key => $v)
+      foreach($detais[$artist][$album]["tracks"] as $key => $v)
       {
-        unset($album["tracks"][$key]["file"]);
+        unset($detais[$artist][$album]["tracks"][$key]["file"]);
       }
     }
-    return $album;
+    return $detais[$artist][$album];
   }
   public function getTrack($aaID, $trackID, $details = false)
   {
